@@ -749,7 +749,13 @@ public class NachoTextView extends MultiAutoCompleteTextView implements TextWatc
 
         clearComposingText();
         Editable editable = getText();
+        int start = mChipTokenizer.findTokenStart(editable, end);
+        if (end < start) {
+            end = start;
+        }
+        editable.replace(start, end, "");
         editable.append(mChipTokenizer.terminateToken(text, data));
+        setSelection(editable.length());
 
         endUnwatchedTextChange();
     }
