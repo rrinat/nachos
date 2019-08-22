@@ -748,7 +748,6 @@ public class NachoTextView extends MultiAutoCompleteTextView implements TextWatc
         CharSequence text = getFilter().convertResultToString(adapter.getItem(position));
 
         clearComposingText();
-        int end = getSelectionEnd();
         Editable editable = getText();
         int start = mChipTokenizer.findTokenStart(editable, end);
         if (end < start) {
